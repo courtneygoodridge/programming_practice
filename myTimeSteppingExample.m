@@ -13,7 +13,7 @@ total_number_samples = simulationtime*samples_per_second;
 X = zeros(total_number_samples, 1);
 Y = zeros(total_number_samples, 1);
 
-% Update Loop
+%%%% Update Loop
 for i = 1:total_number_samples
     if i > 1 
         X(i) = X(i-1) + ...
