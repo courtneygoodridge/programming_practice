@@ -9,29 +9,29 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r timestep, echo=FALSE}
 #### Initial State - starting position, heading angle, time step
-startpos_x <- 0;
-startpos_y <- 0;
-heading_angle <- 5; # degrees of the heading offset
-heading_angle <- heading_angle * pi /180; # converting to degrees
+startpos_x <- 0
+startpos_y <- 0
+heading_angle <- 5 # degrees of the heading offset
+heading_angle <- heading_angle * pi /180 # converting to degrees
 samples <- 5 # per second 
-timestep <- 1 / samples;
-speed <- 10; # in metres per second
+timestep <- 1 / samples
+speed <- 10 # in metres per second
 
-SimulationTime = 30; # in seconds
+SimulationTime <- 30 # in seconds
 TotalSamples <- SimulationTime * samples # number of samples allowed within the simulation time 
 
 
-X <- numeric(TotalSamples); # x the rows length of number of samples
-Y <- numeric(TotalSamples); # y the rows length of number of samples
+X <- numeric(TotalSamples) # x the rows length of number of samples
+Y <- numeric(TotalSamples) # y the rows length of number of samples
 
 #### Update loop
 
 for (i in 1:TotalSamples) { # for index in length of total samples
     if (i > 1) { # if the index is more than 1
         X[i] = X[i-1] + # the index of the x vector of zeros is equal to the index minus 1 plus
-        cos(heading_angle) * speed * timestep; # the cosine of the heading angle mulitpled by speed multiplied by the timestep
+        cos(heading_angle) * speed * timestep # the cosine of the heading angle mulitpled by speed multiplied by the timestep
         Y[i] = Y[i-1] + # the index of the y vector of zeros is equal to the index minus 1 plus
-        sin(heading_angle) * speed * timestep; # the sine of the heading angle mulitpled by speed multiplied by the timestep
+        sin(heading_angle) * speed * timestep # the sine of the heading angle mulitpled by speed multiplied by the timestep
     }
 }
 
@@ -39,6 +39,13 @@ for (i in 1:TotalSamples) { # for index in length of total samples
 
  plot(X, Y)
 
+ ### Dataframe and saving
+
+x_y_coordinates <- data.frame(X, Y) # saving x and y coords in dataframe
+
+View(x_y_coordinates) # view the new dataframe
+
+write.csv(x_y_coordinates, file = "myTimeSteppingExampleData.csv") # writes dataframe to .csv file
 
 ```
 

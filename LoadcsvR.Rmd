@@ -1,0 +1,17 @@
+---
+title: "LoadTimeStepData"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r LoadTimeStep, echo=FALSE}
+data <- read.csv("myTimeSteppingExampleData.csv")  # read csv file 
+
+View(TimeStepData) # view time step data 
+
+plot(TimeStepData$X, TimeStepData$Y, xlab = "X", ylab = "Y") # plotting loaded data and changing axis labels
+
+```
