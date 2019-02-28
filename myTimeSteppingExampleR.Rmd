@@ -45,7 +45,7 @@ x_y_coordinates <- data.frame(X, Y) # saving x and y coords in dataframe
 
 View(x_y_coordinates) # view the new dataframe
 
-write.csv(x_y_coordinates, file = "myTimeSteppingExampleData.csv") # writes dataframe to .csv file
+write.csv(x_y_coordinates, file = "myTimeSteppingExampleDataR.csv") # writes dataframe to .csv file
 
 ```
 

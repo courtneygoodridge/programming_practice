@@ -2,7 +2,8 @@
 import math
 import matplotlib.pyplot as plt
 import pandas as pd
-# for some reason these modules are not importing and are causing errors as they aren't recognised further in the script
+import numpy
+
 startpos_x = 0
 startpos_y = 0
 heading_angle = 5 # degrees of the heading offset
@@ -20,22 +21,20 @@ Y = [0] * TotalSamples # y the rows length of number of samples
 
 #### Update loop
 
-#this fails because TotalSamples is an integer, not a list, so is not iterable (python cannot loop through it)
-for i in TotalSamples: 
-    if i > 1: #unlike matlab and R, python is zero-indexed (the first index in an array is 0)
-
-        # cos() and sin() are not functions in the python base language. Check out the numpy package, you'll be using that a lot.
-        X[i] = X[i-1] + cos(heading_angle) * speed * timestep # the cosine of the heading angle mulitpled by speed multiplied by the timestep
-        Y[i] = Y[i-1] + sin(heading_angle) * speed * timestep
+for i in range(TotalSamples): # iterates over a range of 0 up to total samples (150)
+        if i > 0:
+                X[i] = X[i-1] + numpy.cos(heading_angle) * speed * timestep # the cosine of the heading angle mulitpled by speed multiplied by the timestep
+                Y[i] = Y[i-1] + numpy.sin(heading_angle) * speed * timestep
             
 #### Plotting
 
-plt.plot(X, Y) 
+plt.plot(X, Y)
+plt.show()
 
- ### Dataframe and saving
+### Dataframe and saving
 
-df = pd.DataFrame({'X': X, 'Y': Y}, index=[0]) # creates dataframe from X and Y variables 
+df = pd.DataFrame({'X': X, 'Y': Y}) # creates dataframe from X and Y variables 
 
-df.to_csv('myTimeSteppingExampleData.csv') # saves dataframe as an csv file
+df.to_csv('myTimeSteppingExampleDataPy.csv', sep =',') # saves dataframe as an csv file
 
 

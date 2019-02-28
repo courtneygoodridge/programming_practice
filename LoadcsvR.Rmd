@@ -8,10 +8,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r LoadTimeStep, echo=FALSE}
-data <- read.csv("myTimeSteppingExampleData.csv")  # read csv file 
+data <- read.csv("myTimeSteppingExampleDataR.csv")  # read csv file 
 
-View(TimeStepData) # view time step data 
+View(data) # view time step data 
 
-plot(TimeStepData$X, TimeStepData$Y, xlab = "X", ylab = "Y") # plotting loaded data and changing axis labels
+plot(data$X, data$Y, xlab = "X", ylab = "Y") # plotting loaded data and changing axis labels
 
 ```
