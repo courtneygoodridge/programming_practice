@@ -9,15 +9,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r timestep, echo=FALSE}
 #### Initial State - starting position, heading angle, time step
+TimeStep <- function(heading_angle, samples, timestep, speed, SimulationTime){ # now timestep is a function, user can input any parameters and plot the results.
+
 startpos_x <- 0
 startpos_y <- 0
-heading_angle <- 5 # degrees of the heading offset
+heading_angle <- heading_angle # 5 # degrees of the heading offset
 heading_angle <- heading_angle * pi /180 # converting to degrees
-samples <- 5 # per second 
-timestep <- 1 / samples
-speed <- 10 # in metres per second
+samples <- samples # 5 # per second 
+timestep <- timestep / samples # 1 / samples
+speed <- speed # 10 # in metres per second
 
-SimulationTime <- 30 # in seconds
+SimulationTime <- SimulationTime # in seconds
 TotalSamples <- SimulationTime * samples # number of samples allowed within the simulation time 
 
 
@@ -46,6 +48,8 @@ x_y_coordinates <- data.frame(X, Y) # saving x and y coords in dataframe
 View(x_y_coordinates) # view the new dataframe
 
 write.csv(x_y_coordinates, file = "myTimeSteppingExampleDataR.csv") # writes dataframe to .csv file
+return(x_y_coordinates)
+}
 
 ```
 
